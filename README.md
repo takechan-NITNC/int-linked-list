@@ -4,44 +4,44 @@ struct listはint型を要素とする連結リストを表します。
 ## 前提
 以下のような操作が行われたstruct list型オブジェクトでは，ここに書いてある仕様は保証されません。
 - ここに書いてある関数を用いずに，メンバに直接アクセスした。
-- int_linked_list_copy関数を用いずにコピー（shallow copy）した。
+- list_copy関数を用いずにコピー（shallow copy）した。
 ## 性質
 struct listが表す連結リストは双方向連結リストです。
 
 struct listは最大INT_MAX個の要素を格納することができます。
 
-struct listは動的割り当て記憶域を使用するので，必要なくなった構造体が使用する動的割り当て記憶域はint_linked_list_free関数を用いて解放する必要があります。
+struct listは動的割り当て記憶域を使用するので，必要なくなった構造体が使用する動的割り当て記憶域はlist_free関数を用いて解放する必要があります。
 ## 関数
 この構造体は以下のような関数によって操作されます。
-### struct list *int_linked_list_init()
+### struct list *list_init()
 １つも要素を持たない連結リストを表すstruct list型オブジェクトを作成し，その参照を返します。
 
 時間計算量はO(1)です。
-### struct list *int_linked_list_init_from_array(int\*, int)
+### struct list *list_init_from_array(int\*, int)
 指定したポインタを先頭に指定した個数int型の値を読み取り，読み取った値を格納する連結リストを作成します。戻り値は作成されたstruct list型オブジェクトへの参照です。
 
 読み取った要素数をnとすると，この関数の時間計算量はO(n)です。
-### int int_linked_list_get(struct list\*, int)
+### int list_get(struct list\*, int)
 指定した連結リストの，指定したインデックスから値を読み取ります。指定したインデックスが負の値であるか連結リストの要素数以上である場合，エラーメッセージを表示してプログラムを強制終了します。
 
 指定したインデックスをn，連結リストの要素数をcとすると，この関数の時間計算量はO(min(n, c - n))です。
-### void int_linked_list_set(struct list\*, int, int)
+### void list_set(struct list\*, int, int)
 指定した連結リストの，指定したインデックスに格納されている値を指定した値に書き換えます。指定したインデックスが負の値であるか連結リストの要素数以上である場合，エラーメッセージを表示してプログラムを強制終了します。
 
 指定したインデックスをn，連結リストの要素数をcとすると，この関数の時間計算量はO(min(n, c - n))です。
-### void int_linked_list_add(struct list\*, int)
+### void list_add(struct list\*, int)
 指定した連結リストの末尾に指定した値を追加します。
 
 時間計算量はO(1)です。
-### void int_linked_list_insert(struct list\*, int, int)
+### void list_insert(struct list\*, int, int)
 指定した連結リストの，指定したインデックスに指定した値を挿入します。指定したインデックスが負の値であるか連結リストの要素数を超える場合，エラーメッセージを表示してプログラムを強制終了します。
 
 指定したインデックスをn，連結リストの要素数をcとすると，この関数の時間計算量はO(min(n, c - n))です。
-### void int_linked_list_remove(struct list\*, int)
+### void list_remove(struct list\*, int)
 指定した連結リストの，指定したインデックスの値を削除します。指定したインデックスが負の値であるか連結リストの要素数以上である場合，エラーメッセージを表示してプログラムを強制終了します。
 
 指定したインデックスをn，連結リストの要素数をcとすると，この関数の時間計算量はO(min(n, c - n))です。
-### int int_linked_list_get_count(struct list\*)
+### int list_get_count(struct list\*)
 指定した連結リストの要素数を返します。時間計算量はO(1)です。
-### void int_linked_list_free(struct list\*)
+### void list_free(struct list\*)
 指定したstruct list型オブジェクトが使用する動的割り当て記憶域を解放します。指定したstruct list型オブジェクトにはアクセスできなくなります。

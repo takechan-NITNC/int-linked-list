@@ -17,4 +17,6 @@ void list_add(struct list*, int);
 void list_insert(struct list*, int, int);
 void list_remove(struct list*, int);
 int list_get_count(struct list*);
+struct list *list_copy(struct list*);
+int *list_to_array(struct list*);
 void list_free(struct list*);

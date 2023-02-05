@@ -9,7 +9,7 @@ struct list {
 	struct node *last;
 	int count;
 };
-struct list *list_init();
+struct list *list_init(void);
 struct list *list_init_from_array(int*, int);
 int list_get(struct list*, int);
 void list_set(struct list*, int, int);

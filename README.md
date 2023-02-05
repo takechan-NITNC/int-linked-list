@@ -13,7 +13,7 @@ struct listは最大INT_MAX個の要素を格納することができます。
 struct listは動的割り当て記憶域を使用するので，必要なくなった構造体が使用する動的割り当て記憶域はlist_free関数を用いて解放する必要があります。
 ## 関数
 この構造体は以下のような関数によって操作されます。
-### struct list *list_init()
+### struct list *list_init(void)
 １つも要素を持たない連結リストを表すstruct list型オブジェクトを作成し，その参照を返します。
 
 時間計算量はO(1)です。
